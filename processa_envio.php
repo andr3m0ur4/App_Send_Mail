@@ -41,8 +41,8 @@
 	    $mail->CharSet = 'utf-8';
 
 	    //Recipients
-	    $mail->setFrom('mouraandre2500@gmail.com', 'Web Completo Remetente');
-	    $mail->addAddress('mouraandre2500@hotmail.com', 'Web Completo Destinatário');     // Add a recipient
+	    $mail->setFrom('mouraandre2500@hotmail.com', 'App Send Mail');
+	    $mail->addAddress($mensagem -> __get('para'));     // Add a recipient
 	    //$mail->addAddress('ellen@example.com');               // Name is optional
 	    //$mail->addReplyTo('info@example.com', 'Information');
 	    //$mail->addCC('cc@example.com');
@@ -54,12 +54,12 @@
 
 	    //Content
 	    $mail->isHTML(true);                                  // Set email format to HTML
-	    $mail->Subject = 'Oi. Eu sou o assunto';
-	    $mail->Body    = 'Oi, eu sou o conteúdo do <strong>e-mail</strong>.';
-	    $mail->AltBody = 'Oi eu sou o conteúdo do e-mail.';
+	    $mail->Subject = $mensagem -> __get('assunto');
+	    $mail->Body    = $mensagem -> __get('mensagem');
+	    $mail->AltBody = 'É necessário utilizar um client que suporte HTML para ter acesso total ao conteúdo dessa mensagem.';
 
 	    $mail->send();
-	    echo 'Message has been sent';
+	    echo 'E-mail enviado com sucesso';
 
 	} catch (Exception $e) {
 	    echo 'Não foi possível enviar este e-mail! Por favor tente novamente mais tarde. ';
