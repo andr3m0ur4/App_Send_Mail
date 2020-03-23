@@ -5,6 +5,10 @@
 		private $para;
 		private $assunto;
 		private $mensagem;
+		public $status = [
+			'codigo_status' => null,
+			'descricao_status' => ''
+		];
 
 		public function __get($atributo)
 		{
